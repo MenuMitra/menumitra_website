@@ -223,7 +223,7 @@ const Header: React.FC = () => {
       >
       <nav className="container flex items-center relative">
         {/* Logo */}
-        <div className="nav-logo xl:min-w-[266px]">
+        <div className="nav-logo xl:min-w-[250px]">
           <Link href="/" className="flex items-center gap-3">
             <Image 
               src="/images/mm/mm.png" 
