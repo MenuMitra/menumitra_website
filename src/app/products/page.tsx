@@ -19,66 +19,7 @@ const ProductsPage: React.FC = () => {
     return () => clearTimeout(timer);
   }, [refreshAOS]);
   
-  const productsV13 = [
-    {
-      name: 'Owner App v1.3',
-      image: 'images/mm/mm.png',
-      description: 'Complete restaurant management dashboard for owners. Monitor sales, manage inventory, track staff performance, and make data-driven decisions.',
-      downloadUrl: 'https://menusmitra.xyz/website/owner_app.apk',
-      platform: 'Android 6.0 and above'
-    },
-    {
-      name: 'POS System v1.3',
-      image: 'images/mm/mm.png',
-      description: 'Powerful point-of-sale system with advanced billing, inventory tracking, and comprehensive reporting capabilities.',
-      downloadUrl: 'https://menusmitra.xyz/website/menumitra_pos_system.exe',
-      platform: 'Windows 7 and above'
-    },
-    {
-      name: 'Captain App v1.3',
-      image: 'images/mm/mm.png',
-      description: 'Streamlined table management and order coordination for restaurant captains. Optimize table turnover and service efficiency.',
-      downloadUrl: 'https://menusmitra.xyz/website/captain_app.apk',
-      platform: 'Android 6.0 and above'
-    },
-    {
-      name: 'Waiter App v1.3',
-      image: 'images/mm/mm.png',
-      description: 'Intuitive order-taking interface for waitstaff. Take orders, manage customer requests, and ensure seamless service delivery.',
-      downloadUrl: 'https://menusmitra.xyz/website/waiter_app.apk',
-      platform: 'Android 6.0 and above'
-    },
-    {
-      name: 'Partner App v1.3',
-      image: 'images/mm/mm.png',
-      description: 'Comprehensive delivery and partnership management platform. Coordinate with delivery partners and manage external collaborations.',
-      downloadUrl: 'https://menusmitra.xyz/website/partner_app.apk',
-      platform: 'Android 6.0 and above'
-    }
-  ];
 
-  const productsV13Web = [
-    {
-      name: 'MenuMitra Customer Display System',
-      url: 'https://cds.menumitra.com/',
-      description: 'Interactive customer display system for order tracking, promotions, and enhanced customer engagement experience. Real-time order status updates and promotional content display.'
-    },
-    {
-      name: 'MenuMitra Kitchen Display System',
-      url: 'https://kds.menumitra.com/',
-      description: 'Advanced kitchen display system with order prioritization, cooking timers, and seamless kitchen workflow management. Optimize kitchen operations and reduce order preparation time.'
-    },
-    {
-      name: 'MenuMitra Statistics Dashboard',
-      url: 'https://statistics.menumitra.com/login',
-      description: 'Comprehensive analytics dashboard with real-time insights, sales reports, and performance metrics to drive data-driven business decisions and track restaurant performance.'
-    },
-    {
-      name: 'MenuMitra User Application',
-      url: 'https://user.menumitra.com/user_app/index',
-      description: 'Complete user management application for restaurant staff and customers. Manage user accounts, permissions, and access control across all MenuMitra applications.'
-    }
-  ];
 
   const productsV2 = [
     {
@@ -205,7 +146,7 @@ const ProductsPage: React.FC = () => {
                   </p>
                   <div className="flex justify-center mt-4">
                     <a 
-                      href={product.downloadUrl}
+                      // href={product.downloadUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn btn-navbar btn-sm flex items-center gap-2"
