@@ -13,8 +13,8 @@ export const CONTACT_CONFIG = {
   
   // Website URLs
   website: {
-    base: 'https://menumitra-website-new.netlify.app',
-    www: 'menumitra-website-new.netlify.app',
+    base: 'https://menumitra.com',
+    www: 'menumitra.com',
     // Subdomain URLs
     stats: 'https://stats-v2.menumitra.com',
     kds: 'https://kds-v2.menumitra.com',

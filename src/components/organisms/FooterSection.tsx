@@ -682,7 +682,7 @@ const FooterSection: React.FC<FooterSectionProps> = ({ className = '' }) => {
       <hr />
         <div className="py-5 max-lg:text-center">
           <div className="flex flex-col lg:items-center">
-            <ul className="max-lg:grid max-lg:grid-cols-2 max-lg:gap-x-6 max-lg:gap-y-3 max-lg:place-items-start max-lg:w-full lg:flex lg:items-center lg:gap-15">
+            <ul className="max-lg:grid max-lg:grid-cols-2 max-lg:gap-x-6 max-lg:gap-y-3 max-lg:place-items-start max-lg:w-full lg:flex lg:items-center lg:gap-5">
               <li>
                 <a href="/privacy-and-policy" className="relative inline-block overflow-hidden text-base capitalize text-paragraph before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:origin-right before:scale-x-0 before:bg-paragraph before:transition-transform before:duration-500 before:content-[''] before:hover:origin-left before:hover:scale-x-100 text-gray-custom text-nowrap">
                   Privacy Policy

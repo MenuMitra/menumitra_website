@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'About MenuMitra - Leading Restaurant Management Solutions',
     description: 'Discover MenuMitra\'s journey in revolutionizing restaurant management. Our expert team is committed to transforming the food service industry with cutting-edge AI technology.',
-    url: 'https://menumitra-website-new.netlify.app/about',
+    url: 'https://menumitra.com/about',
     images: [
       {
         url: '/images/hero/menumitra-og-image.jpg',
