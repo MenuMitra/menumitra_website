@@ -177,7 +177,7 @@ const ProductsPage: React.FC = () => {
           </div>
 
           <div 
-            className="grid grid-cols-1 lg:grid-cols-2 gap-12"
+            className="grid grid-cols-1 lg:grid-cols-1 gap-12"
             data-aos="fade-up"
             data-aos-offset={200}
             data-aos-duration={300}
@@ -206,58 +206,6 @@ const ProductsPage: React.FC = () => {
                     data-aos-offset={100}
                     data-aos-duration={300}
                     data-aos-delay={400 + (index * 50)}
-                    data-aos-once="true"
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="flex-1">
-                        <h4 className="font-semibold text-lg mb-1">{product.name}</h4>
-                        <p className="text-sm text-gray-600 mb-2">{product.description}</p>
-                        <a 
-                          href={product.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-blue-600 hover:underline text-sm font-medium"
-                        >
-                          {product.url}
-                        </a>
-                      </div>
-                      <a 
-                        href={product.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn btn-navbar btn-sm flex items-center gap-2 ml-4"
-                      >
-                        <ExternalLink className="w-4 h-4" color="white" />
-                        Visit
-                      </a>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Testing Environment */}
-            <div className="bg-white shadow-box rounded-medium p-8">
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-semibold mb-4 flex items-center justify-center gap-3">
-                  <Monitor className="w-6 h-6 text-orange-600" />
-                  Testing Environment
-                </h3>
-                <p className="text-gray-600">
-                  Development and testing applications for experimentation and validation. 
-                  Perfect for trying new features before they go live in production.
-                </p>
-              </div>
-              
-              <div className="space-y-4">
-                {productsV2Web.testing.map((product, index) => (
-                  <div 
-                    key={index} 
-                    className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow"
-                    data-aos="fade-up"
-                    data-aos-offset={100}
-                    data-aos-duration={300}
-                    data-aos-delay={600 + (index * 50)}
                     data-aos-once="true"
                   >
                     <div className="flex items-center justify-between">
