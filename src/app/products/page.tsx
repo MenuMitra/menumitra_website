@@ -23,12 +23,12 @@ const ProductsPage: React.FC = () => {
 
   const productsV2 = [
     {
-      name: 'Owner App v2',
+      name: 'Mobile App v2',
       image: 'images/mm/mm.png',
       description: 'Revolutionary restaurant management platform with AI-powered insights, real-time analytics, and advanced automation features for modern restaurant owners.',
       downloadUrl: 'https://menusmitra.xyz/website/owner_app_v2.apk',
       platform: 'Android 6.0 and above',
-      releaseDate: 'Released: 28 July 2025'
+      releaseDate: 'Released: 1 October 2025'
     },
     {
       name: 'POS System v2',
@@ -36,29 +36,29 @@ const ProductsPage: React.FC = () => {
       description: 'Next-generation point-of-sale system featuring cloud synchronization, advanced inventory management, and integrated payment processing.',
       downloadUrl: 'https://menusmitra.xyz/website/menumitra_pos_system_v2.exe',
       platform: 'Windows 7 and above',
-      releaseDate: 'Released: 31 July 2025'
+      releaseDate: 'Released: 1 October 2025'
     }
   ];
 
   const productsV2Web = {
     production: [
       {
-        name: 'Menumitra Stats',
+        name: 'MenuMitra Stats',
         url: website.stats,
         description: 'Comprehensive analytics dashboard with real-time insights, sales reports, and performance metrics to drive data-driven decisions.'
       },
       {
-        name: 'Menumitra KDS',
+        name: 'MenuMitra Kitchen Display System',
         url: website.kds,
         description: 'Advanced Kitchen Display System with order prioritization, cooking timers, and seamless kitchen workflow management.'
       },
       {
-        name: 'Menumitra CDS',
+        name: 'MenuMitra Customer Display System',
         url: website.cds,
         description: 'Interactive Customer Display System for order tracking, promotions, and enhanced customer engagement experience.'
       },
       {
-        name: 'Menumitra Customer',
+        name: 'MenuMitra Customer',
         url: website.customer,
         description: 'Customer-facing web application for online ordering, menu browsing, and seamless dining experience.'
       }
