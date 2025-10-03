@@ -146,7 +146,7 @@ const ProductsPage: React.FC = () => {
                   </p>
                   <div className="flex justify-center mt-4">
                     <a 
-                      // href={product.downloadUrl}
+                      href={product.downloadUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn btn-navbar btn-sm flex items-center gap-2"
