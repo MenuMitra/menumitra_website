@@ -5,7 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = website.base
   
   return [
-    // Main pages
+    // Main pages (High Priority)
     {
       url: baseUrl,
       lastModified: new Date(),
@@ -36,8 +36,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
+    {
+      url: `${baseUrl}/careers`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/customer-care`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/compliance`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.4,
+    },
+    {
+      url: `${baseUrl}/escalation-matrix`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.4,
+    },
 
-    // Features pages
+    // Features pages (High Priority for SEO)
     {
       url: `${baseUrl}/features/menu`,
       lastModified: new Date(),
@@ -123,7 +147,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     },
 
-    // Addons pages
+    // Addons pages (Medium Priority)
     {
       url: `${baseUrl}/addons/captain-app`,
       lastModified: new Date(),
@@ -185,7 +209,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     },
 
-    // Outlet type pages
+    // Outlet type pages (Medium-High Priority for SEO)
     {
       url: `${baseUrl}/outlet-type/restaurant`,
       lastModified: new Date(),
@@ -194,6 +218,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/outlet-type/cafe`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/outlet-type/qsr`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,
@@ -252,14 +282,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.6,
     },
-    {
-      url: `${baseUrl}/outlet-type/qsr`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
 
-    // Legal pages
+    // Legal and Policy pages (Low Priority)
     {
       url: `${baseUrl}/privacy-and-policy`,
       lastModified: new Date(),
@@ -274,6 +298,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/cookie-policy`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/cancellation-policy`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/refund-policy`,
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 0.3,
