@@ -32,24 +32,77 @@ Disallow: /*.log
 Disallow: /temp/
 Disallow: /tmp/
 
-# Allow actual existing pages
+# Allow main pages
 Allow: /
 Allow: /about
 Allow: /book-demo
 Allow: /contact
 Allow: /products
+Allow: /careers
+Allow: /customer-care
+Allow: /compliance
+Allow: /escalation-matrix
+
+# Allow features pages
 Allow: /features/
+Allow: /features/billing
+Allow: /features/chain-management
+Allow: /features/customer-feedback
+Allow: /features/customer-management
+Allow: /features/inventory
+Allow: /features/menu
+Allow: /features/online-order
+Allow: /features/recipe-management
+Allow: /features/restaurant-reports
+Allow: /features/scan-order
+Allow: /features/social-media-management
+Allow: /features/staff-management
+Allow: /features/store-management
+Allow: /features/utility-management
+
+# Allow addons pages
 Allow: /addons/
+Allow: /addons/captain-app
+Allow: /addons/customer-app
+Allow: /addons/customer-display-system
+Allow: /addons/customised-solution
+Allow: /addons/hotel-management
+Allow: /addons/kitchen-display-system
+Allow: /addons/money-management
+Allow: /addons/point-of-sale
+Allow: /addons/smart-mobile-app
+Allow: /addons/waiter-app
+
+# Allow outlet-type pages
 Allow: /outlet-type/
+Allow: /outlet-type/bakeries
+Allow: /outlet-type/bar-pub
+Allow: /outlet-type/cafe
+Allow: /outlet-type/catering
+Allow: /outlet-type/cloud-kitchens
+Allow: /outlet-type/fine-dine
+Allow: /outlet-type/food-courts
+Allow: /outlet-type/food-truck
+Allow: /outlet-type/large-chain
+Allow: /outlet-type/pizzeria
+Allow: /outlet-type/qsr
+Allow: /outlet-type/restaurant
+
+# Allow policy and legal pages
 Allow: /privacy-and-policy
 Allow: /terms-and-conditions
 Allow: /cookie-policy
+Allow: /cancellation-policy
+Allow: /refund-policy
 Allow: /request-data-removal
 
 # Allow static assets
 Allow: /images/
 Allow: /favicon.ico
 Allow: /manifest.json
+Allow: /apple-icon.png
+Allow: /icon0.svg
+Allow: /icon1.png
 Allow: /*.css
 Allow: /*.js
 Allow: /*.png
