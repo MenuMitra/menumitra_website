@@ -23,7 +23,7 @@ const ProductsPage: React.FC = () => {
 
   const productsV2 = [
     {
-      name: 'Mobile App v2',
+      name: 'Mobile App',
       image: 'images/mm/mm.png',
       description: 'Revolutionary restaurant management platform with AI-powered insights, real-time analytics, and advanced automation features for modern restaurant owners.',
       downloadUrl: 'https://ghanish.in/website/owner_app_v2.apk',
@@ -31,7 +31,7 @@ const ProductsPage: React.FC = () => {
       releaseDate: 'Released: 1 October 2025'
     },
     {
-      name: 'POS System v2',
+      name: 'POS System',
       image: 'images/mm/mm.png',
       description: 'Next-generation point-of-sale system featuring cloud synchronization, advanced inventory management, and integrated payment processing.',
       downloadUrl: 'https://ghanish.in/website/menumitra_pos_system_v2.exe',
@@ -106,10 +106,10 @@ const ProductsPage: React.FC = () => {
           <SectionDivider className="my-16" />
 
           <div className="text-center mx-auto mb-25">
-            <h2 className="mb-4">Version 2.0 - Next Generation</h2>
+            <h2 className="mb-4">Applications</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Experience the future of restaurant management with our latest applications. 
-              Enhanced features, improved performance, and cutting-edge technology await.
+              Powerful restaurant management applications built with cutting-edge technology. 
+              Download our production-ready solutions designed for modern restaurant operations.
             </p>
           </div>
           <div
@@ -168,7 +168,7 @@ const ProductsPage: React.FC = () => {
       <section className="pb-20 relative">
         <div className="container">
           <div className="text-center mx-auto mb-25">
-            <h2 className="mb-8">V2 Web Applications - Cloud-Powered Solutions</h2>
+            <h2 className="mb-8">Web Applications - Cloud-Powered Solutions</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Access our cutting-edge web-based applications designed for modern restaurant operations. 
               Built with the latest technology stack, these applications provide seamless, real-time collaboration 
