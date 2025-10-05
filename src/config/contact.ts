@@ -16,10 +16,10 @@ export const CONTACT_CONFIG = {
     base: 'https://menumitra.com',
     www: 'menumitra.com',
     // Subdomain URLs
-    stats: 'https://stats-v2.menumitra.com',
-    kds: 'https://kds-v2.menumitra.com',
-    cds: 'https://cds-v2.menumitra.com',
-    customer: 'https://customer-v2.menumitra.com',
+    stats: 'https://stats.menumitra.com',
+    kds: 'https://kds.menumitra.com',
+    cds: 'https://cds.menumitra.com',
+    customer: 'https://customer.menumitra.com',
   },
   
   // Social media handles
