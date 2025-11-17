@@ -8,8 +8,8 @@ const API_CONFIG = {
   // Development: uses men4u.xyz
   // Production/Staging: uses ghanish.in
   baseUrl: isDevelopment 
-    ? 'https://men4u.xyz/v2/website_api'    // Development
-    : 'https://ghanish.in/v2/website_api',  // Production/Staging
+    ? 'https://ghanish.in/v2/website_api'    // Production
+    : 'https://menu4.xyz/v2/website_api',  // Testing
   
   // API Endpoints
   endpoints: {
@@ -45,3 +45,15 @@ export const API_ENDPOINTS = {
 // Export base URL for other uses
 export const API_BASE_URL = API_CONFIG.baseUrl;
 export const API_HEADERS = API_CONFIG.defaultHeaders;
+
+// Helper function to get base domain (without /v2/website_api path)
+const getBaseDomain = (): string => {
+  const baseUrl = API_CONFIG.baseUrl;
+  // Extract domain from baseUrl (remove /v2/website_api)
+  return baseUrl.replace('/v2/website_api', '');
+};
+
+// Helper function to get product download URL
+export const getProductDownloadUrl = (filename: string): string => {
+  return `${getBaseDomain()}/website/${filename}`;
+};
