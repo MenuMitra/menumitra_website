@@ -28,7 +28,7 @@ const ProductsPage: React.FC = () => {
       description: 'Revolutionary restaurant management platform with AI-powered insights, real-time analytics, and advanced automation features for modern restaurant owners.',
       downloadUrl: 'https://ghanish.in/website/owner_app_v2.apk',
       platform: 'Android 6.0 and above',
-      releaseDate: 'Released: 5 November 2025'
+      releaseDate: 'Released: 17 November 2025'
     },
     {
       name: 'POS System',
@@ -36,7 +36,7 @@ const ProductsPage: React.FC = () => {
       description: 'Next-generation point-of-sale system featuring cloud synchronization, advanced inventory management, and integrated payment processing.',
       downloadUrl: 'https://ghanish.in/website/menumitra_pos_system_v2.exe',
       platform: 'Windows 7 and above',
-      releaseDate: 'Released: 5 November 2025'
+      releaseDate: 'Released: 17 November 2025'
     }
   ];
 
