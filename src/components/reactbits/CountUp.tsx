@@ -42,6 +42,10 @@ export default function CountUp({
   const isInView = useInView(ref, { once: true, margin: '0px' });
 
   const getDecimalPlaces = (num: number) => {
+    // Guard against undefined/null values
+    if (num === undefined || num === null || isNaN(num)) {
+      return 0;
+    }
     const str = num.toString();
 
     if (str.includes('.')) {
@@ -55,11 +59,16 @@ export default function CountUp({
     return 0;
   };
 
-  const maxDecimals = Math.max(getDecimalPlaces(from), getDecimalPlaces(to));
+  // Ensure to and from are valid numbers
+  const safeTo = (typeof to === 'number' && !isNaN(to)) ? to : 0;
+  const safeFrom = (typeof from === 'number' && !isNaN(from)) ? from : 0;
+  const maxDecimals = Math.max(getDecimalPlaces(safeFrom), getDecimalPlaces(safeTo));
 
   useEffect(() => {
     if (ref.current) {
-      ref.current.textContent = String(direction === 'down' ? to : from);
+      const safeTo = (typeof to === 'number' && !isNaN(to)) ? to : 0;
+      const safeFrom = (typeof from === 'number' && !isNaN(from)) ? from : 0;
+      ref.current.textContent = String(direction === 'down' ? safeTo : safeFrom);
     }
   }, [from, to, direction]);
 
@@ -68,7 +77,9 @@ export default function CountUp({
       if (typeof onStart === 'function') onStart();
 
       const timeoutId = setTimeout(() => {
-        motionValue.set(direction === 'down' ? from : to);
+        const safeTo = (typeof to === 'number' && !isNaN(to)) ? to : 0;
+        const safeFrom = (typeof from === 'number' && !isNaN(from)) ? from : 0;
+        motionValue.set(direction === 'down' ? safeFrom : safeTo);
       }, delay * 1000);
 
       const durationTimeoutId = setTimeout(

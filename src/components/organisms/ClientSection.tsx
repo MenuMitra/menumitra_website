@@ -56,14 +56,17 @@ const ClientSection: React.FC = () => {
   <div className="container relative z-10">
     <div className="grid grid-cols-2 max-md:grid-cols-1 gap-10 1xl:gap-x-24 items-center">
       <div className="relative flex max-md:justify-center justify-end items-center">
-        <img
-          src="images/crypto/aboutCrypto12.png"
+        <Image
+          src="/images/crypto/aboutCrypto12.png"
           alt="MenuMitra platform shape"
-          className=" max-w-[250px] lg:max-w-[320px] xl:max-w-[420px]"
+          width={420}
+          height={420}
+          className="max-w-[250px] lg:max-w-[320px] xl:max-w-[420px]"
           data-aos="fade-up"
           data-aos-offset={200}
           data-aos-duration={400}
           data-aos-once="true"
+          suppressHydrationWarning
         />
         <div
           className="absolute left-0 right-auto bottom-8 top-auto max-w-[180px] md:max-w-[250px] xl:max-w-[344px] drop-shadow-xl"
@@ -71,10 +74,13 @@ const ClientSection: React.FC = () => {
           data-aos-offset={200}
           data-aos-duration={400}
           data-aos-once="true"
+          suppressHydrationWarning
         >
-          <img
-            src="images/crypto/aboutCrypto-shape-MM.png"
+          <Image
+            src="/images/crypto/aboutCrypto-shape-MM.png"
             alt="MenuMitra platform shape"
+            width={344}
+            height={344}
             className=""
           />
         </div>

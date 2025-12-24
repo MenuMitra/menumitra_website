@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
+import Image from 'next/image';
 import FooterSection from '@/components/organisms/FooterSection';
 import TestimonialsSlider from '@/components/organisms/TestimonialsSlider';
 import { useAOS } from '@/hooks/useAOS';
@@ -50,15 +51,15 @@ const AboutClient: React.FC = () => {
       <div className="max-lg:order-2">
         <div className="relative pt-150 lg:py-150 lg:px-150">
           <div className="w-[250px] lg:w-[300px] aspect-video relative mx-auto">
-            <img src="images/solution/solution.png" alt="vision image" className="" />
-            <div className="absolute left-10 -top-[130px] lg:-top-[185px] lg:left-15 right-auto bottom-auto w-[250px] h-[150px] lg:w-[280px] lg:h-[180px] xl:w-[320px] xl:h-[230px]" data-aos="fade-left" data-aos-offset={200} data-aos-duration={1000} data-aos-once="true">
-              <img src="images/solution/solution-shape1.png" alt="vision image" className="w-full" />
+            <Image src="/images/solution/solution.png" alt="vision image" width={300} height={169} className="" />
+            <div className="absolute left-10 -top-[130px] lg:-top-[185px] lg:left-15 right-auto bottom-auto w-[250px] h-[150px] lg:w-[280px] lg:h-[180px] xl:w-[320px] xl:h-[230px]" data-aos="fade-left" data-aos-offset={200} data-aos-duration={1000} data-aos-once="true" suppressHydrationWarning>
+              <Image src="/images/solution/solution-shape1.png" alt="vision image" width={320} height={230} className="w-full" />
             </div>
-            <div className="absolute right-12 top-12 lg:right-20 left-auto bottom-auto w-[280px] h-[190px] lg:w-[320px] lg:h-[230px] xl:w-[368px] xl:h-[280px]" data-aos="fade-up" data-aos-offset={200} data-aos-duration={1000} data-aos-delay={100} data-aos-once="true">
-              <img src="images/solution/solution-shape2.png" alt="vision image" className="w-full" />
+            <div className="absolute right-12 top-12 lg:right-20 left-auto bottom-auto w-[280px] h-[190px] lg:w-[320px] lg:h-[230px] xl:w-[368px] xl:h-[280px]" data-aos="fade-up" data-aos-offset={200} data-aos-duration={1000} data-aos-delay={100} data-aos-once="true" suppressHydrationWarning>
+              <Image src="/images/solution/solution-shape2.png" alt="vision image" width={368} height={280} className="w-full" />
             </div>
-            <div className="absolute left-[175px] -bottom-[70px] lg:-bottom-[86px] lg:left-[200px] right-auto top-auto w-[150px] lg:w-[170px] aspect-video" data-aos="fade-left" data-aos-offset={200} data-aos-duration={1000} data-aos-delay={200} data-aos-once="true">
-              <img src="images/solution/solution-shape3.png" alt="vision image" className="w-full" />
+            <div className="absolute left-[175px] -bottom-[70px] lg:-bottom-[86px] lg:left-[200px] right-auto top-auto w-[150px] lg:w-[170px] aspect-video" data-aos="fade-left" data-aos-offset={200} data-aos-duration={1000} data-aos-delay={200} data-aos-once="true" suppressHydrationWarning>
+              <Image src="/images/solution/solution-shape3.png" alt="vision image" width={170} height={96} className="w-full" />
             </div>
           </div>
         </div>

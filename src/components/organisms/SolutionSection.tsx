@@ -14,9 +14,11 @@ const SolutionSection: React.FC<SolutionSectionProps> = ({ className = '' }) => 
       <div className="max-md:order-2">
         <div className="relative pt-150 lg:py-150 lg:px-150">
           <div className="w-[250px] lg:w-[300px] aspect-video relative mx-auto">
-            <img
-              src="images/solution/solution.png"
+            <Image
+              src="/images/solution/solution.png"
               alt="vision image"
+              width={300}
+              height={169}
               className=""
             />
             <div
@@ -25,11 +27,14 @@ const SolutionSection: React.FC<SolutionSectionProps> = ({ className = '' }) => 
               data-aos-offset={200}
               data-aos-duration={1000}
               data-aos-once="true"
+              suppressHydrationWarning
             >
-              <img
-                src="images/solution/solution-shape1.png"
+              <Image
+                src="/images/solution/solution-shape1.png"
                 alt="vision image"
-                className="  w-full"
+                width={320}
+                height={230}
+                className="w-full"
               />
             </div>
             <div
@@ -39,11 +44,14 @@ const SolutionSection: React.FC<SolutionSectionProps> = ({ className = '' }) => 
               data-aos-duration={1000}
               data-aos-delay={100}
               data-aos-once="true"
+              suppressHydrationWarning
             >
-              <img
-                src="images/solution/solution-shape2.png"
+              <Image
+                src="/images/solution/solution-shape2.png"
                 alt="vision image"
-                className="  w-full"
+                width={368}
+                height={280}
+                className="w-full"
               />
             </div>
             <div
@@ -53,11 +61,14 @@ const SolutionSection: React.FC<SolutionSectionProps> = ({ className = '' }) => 
               data-aos-duration={1000}
               data-aos-delay={200}
               data-aos-once="true"
+              suppressHydrationWarning
             >
-              <img
-                src="images/solution/solution-shape3.png"
+              <Image
+                src="/images/solution/solution-shape3.png"
                 alt="vision image"
-                className="  w-full"
+                width={170}
+                height={96}
+                className="w-full"
               />
             </div>
           </div>

@@ -19,6 +19,9 @@ const API_CONFIG = {
     
     // Booking API
     createWebsiteBooking: '/create_website_booking',
+    
+    // Investor Stats API
+    appMetricsSummary: '/app_metrics_summary',
   },
   
   // Default headers
@@ -40,6 +43,7 @@ export const API_ENDPOINTS = {
   REQUEST_DATA_REMOVAL: getApiUrl('requestDataRemoval'),
   VERIFY_DATA_REMOVAL_OTP: getApiUrl('verifyDataRemovalOTP'),
   CREATE_WEBSITE_BOOKING: getApiUrl('createWebsiteBooking'),
+  APP_METRICS_SUMMARY: getApiUrl('appMetricsSummary'),
 };
 
 // Export base URL for other uses
