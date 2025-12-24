@@ -9,7 +9,7 @@ import {
 import { useInvestorStats } from '@/hooks/useInvestorStats';
 import {
   ShoppingCart,
-  DollarSign,
+  IndianRupee,
   CreditCard,
   Clock,
   CheckCircle,
@@ -96,7 +96,7 @@ const InvestorStatsSection: React.FC<InvestorStatsSectionProps> = ({
       suffix: '',
       prefix: '₹',
       label: 'Total Revenue',
-      icon: DollarSign,
+      icon: IndianRupee,
       format: 'currency' as const,
     },
     {
