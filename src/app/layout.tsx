@@ -8,6 +8,7 @@ import Header from "@/components/organisms/Header";
 import { Toaster } from "react-hot-toast";
 import { website, social } from "@/config/contact";
 import AOSProvider from "@/components/providers/AOSProvider";
+import QueryProvider from "@/components/providers/QueryProvider";
 import FloatingActionButton from "@/components/atoms/FloatingActionButton";
 
 const lato = Lato({
@@ -408,9 +409,11 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <Header />
-        <AOSProvider>
-          {children}
-        </AOSProvider>
+        <QueryProvider>
+          <AOSProvider>
+            {children}
+          </AOSProvider>
+        </QueryProvider>
         
         {/* Floating Action Button */}
         <FloatingActionButton

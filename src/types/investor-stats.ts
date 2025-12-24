@@ -87,38 +87,33 @@ const transformApiResponse = (apiData: ApiInvestorStatsResponse['data']): Invest
 
 /**
  * Fetch investor stats from API
+ * Note: This function should be used with TanStack Query for proper caching
+ * Use the useInvestorStats hook instead of calling this directly
  */
 export const fetchInvestorStats = async (): Promise<InvestorStats> => {
-  try {
-    // Use environment variable or direct URL
-    const apiUrl = process.env.NEXT_PUBLIC_METRICS_API_URL || 'https://menusmitra.xyz/v2/website_api/app_metrics_summary';
-    
-    const response = await fetch(apiUrl, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      // For client-side fetching, we can't use next: { revalidate }
-      // Cache control is handled by the browser
-      cache: 'no-store', // Always fetch fresh data
-    });
+  // Use environment variable or direct URL
+  const apiUrl = process.env.NEXT_PUBLIC_METRICS_API_URL || 'https://menusmitra.xyz/v2/website_api/app_metrics_summary';
+  
+  const response = await fetch(apiUrl, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    // TanStack Query handles caching, so we can use default cache behavior
+    cache: 'default',
+  });
 
-    if (!response.ok) {
-      throw new Error(`API error: ${response.status} ${response.statusText}`);
-    }
-
-    const apiResponse: ApiInvestorStatsResponse = await response.json();
-    
-    if (!apiResponse.data) {
-      throw new Error('Invalid API response format');
-    }
-
-    return transformApiResponse(apiResponse.data);
-  } catch (error) {
-    console.error('Error fetching investor stats:', error);
-    // Return mock data as fallback
-    return mockInvestorStats;
+  if (!response.ok) {
+    throw new Error(`API error: ${response.status} ${response.statusText}`);
   }
+
+  const apiResponse: ApiInvestorStatsResponse = await response.json();
+  
+  if (!apiResponse.data) {
+    throw new Error('Invalid API response format');
+  }
+
+  return transformApiResponse(apiResponse.data);
 };
 
 /**

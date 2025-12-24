@@ -1,13 +1,13 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { CountUp } from '@/components/reactbits';
 import { 
   InvestorStats, 
   mockInvestorStats, 
-  calculateDerivedMetrics,
-  fetchInvestorStats
+  calculateDerivedMetrics
 } from '@/types/investor-stats';
+import { useInvestorStats } from '@/hooks/useInvestorStats';
 import {
   ShoppingCart,
   DollarSign,
@@ -70,34 +70,16 @@ const InvestorStatsSection: React.FC<InvestorStatsSectionProps> = ({
   className = '',
   useApi = true
 }) => {
-  const [stats, setStats] = useState<InvestorStats>(providedStats || mockInvestorStats);
-  const [isLoading, setIsLoading] = useState(useApi && !providedStats);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    // Only fetch if useApi is true and no stats were provided
-    if (useApi && !providedStats) {
-      const loadStats = async () => {
-        setIsLoading(true);
-        setError(null);
-        try {
-          const fetchedStats = await fetchInvestorStats();
-          setStats(fetchedStats);
-        } catch (err) {
-          console.error('Failed to load investor stats:', err);
-          setError('Failed to load statistics. Showing cached data.');
-          // Use mock data as fallback
-          setStats(mockInvestorStats);
-        } finally {
-          setIsLoading(false);
-        }
-      };
-
-      loadStats();
-    } else if (providedStats) {
-      setStats(providedStats);
-    }
-  }, [useApi, providedStats]);
+  // Use TanStack Query for caching (10 minutes cache to respect rate limiting)
+  // Only enable query if useApi is true and no stats were provided
+  const shouldFetch = useApi && !providedStats;
+  const { data: queryStats, isLoading, isError } = useInvestorStats(shouldFetch);
+  
+  // Use provided stats if available, otherwise use query data, fallback to mock
+  const stats: InvestorStats = providedStats || queryStats || mockInvestorStats;
+  // Only show loading if we're using API and no stats were provided
+  const isActuallyLoading = useApi && !providedStats && isLoading;
+  const error = (useApi && !providedStats && isError) ? 'Failed to load statistics. Showing cached data.' : null;
 
   const metrics = calculateDerivedMetrics(stats);
 
@@ -244,7 +226,7 @@ const InvestorStatsSection: React.FC<InvestorStatsSectionProps> = ({
   };
 
   // Loading state
-  if (isLoading) {
+  if (isActuallyLoading) {
     return (
       <div className={className}>
         <section className="mb-150 relative">
