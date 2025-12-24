@@ -1,10 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Disable ESLint and TypeScript checking during build to prevent Netlify build failures
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  // Disable TypeScript checking during build to prevent Netlify build failures
+  // Note: ESLint config in next.config.ts is no longer supported in Next.js 16+
+  // ESLint should be configured via eslint.config.js or package.json
   typescript: {
     ignoreBuildErrors: true,
   },
