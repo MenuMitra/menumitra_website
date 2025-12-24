@@ -1,7 +1,7 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import { InvestorStats, fetchInvestorStats, mockInvestorStats } from '@/types/investor-stats';
+import { InvestorStats, fetchInvestorStats, defaultInvestorStats } from '@/types/investor-stats';
 
 /**
  * Custom hook to fetch investor stats with TanStack Query
@@ -16,9 +16,9 @@ export const useInvestorStats = (enabled: boolean = true) => {
       try {
         return await fetchInvestorStats();
       } catch (error) {
-        // If API fails, return mock data as fallback
+        // If API fails, return default empty stats
         console.error('Error fetching investor stats:', error);
-        return mockInvestorStats;
+        return defaultInvestorStats;
       }
     },
     enabled, // Only run query if enabled is true

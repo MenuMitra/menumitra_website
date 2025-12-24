@@ -10,7 +10,8 @@ export interface ApiInvestorStatsResponse {
     total_orders: number;
     total_revenue: number;
     avg_order_value: number;
-    avg_turnover_minutes: number;
+    avg_turnover: string; // Format: "26m 53s" or number (for backward compatibility)
+    avg_turnover_minutes?: number; // Legacy field, may not be present
     total_success_order: number;
     total_cancel_order: number;
     total_dine_in_order: number;
@@ -34,6 +35,7 @@ export interface InvestorStats {
   
   // Performance Metrics
   avgTurnoverTime: number; // in minutes
+  avgTurnoverTimeFormatted?: string; // Original formatted string like "26m 53s"
   
   // Order Type Statistics
   totalDineInOrders: number;
@@ -65,16 +67,63 @@ export interface DetailedStat {
 }
 
 /**
+ * Parse turnover time string (e.g., "26m 53s") to minutes
+ * @param turnoverTime - String in format "Xm Ys" or number
+ * @returns Number of minutes (rounded to 1 decimal place for display)
+ */
+const parseTurnoverTime = (turnoverTime: string | number): number => {
+  // If it's already a number, return it rounded
+  if (typeof turnoverTime === 'number') {
+    return Math.round(turnoverTime * 10) / 10; // Round to 1 decimal place
+  }
+
+  // Parse string format like "26m 53s"
+  const match = turnoverTime.match(/(\d+)m\s*(\d+)s?/);
+  if (match) {
+    const minutes = parseInt(match[1], 10);
+    const seconds = parseInt(match[2] || '0', 10);
+    // Convert to total minutes (including seconds as fraction) and round to 1 decimal
+    const totalMinutes = minutes + seconds / 60;
+    return Math.round(totalMinutes * 10) / 10;
+  }
+
+  // Try to parse as just minutes "26m"
+  const minutesOnly = turnoverTime.match(/(\d+)m/);
+  if (minutesOnly) {
+    return parseInt(minutesOnly[1], 10);
+  }
+
+  // Fallback: try to parse as number string
+  const parsed = parseFloat(turnoverTime);
+  return isNaN(parsed) ? 0 : Math.round(parsed * 10) / 10;
+};
+
+/**
  * Transform API response (snake_case) to InvestorStats (camelCase)
  */
 const transformApiResponse = (apiData: ApiInvestorStatsResponse['data']): InvestorStats => {
+  // Handle avg_turnover - can be string "26m 53s" or number
+  let avgTurnoverTime: number;
+  let avgTurnoverTimeFormatted: string | undefined;
+  
+  if (apiData.avg_turnover_minutes !== undefined) {
+    avgTurnoverTime = apiData.avg_turnover_minutes;
+  } else if (typeof apiData.avg_turnover === 'string') {
+    // Store the original formatted string
+    avgTurnoverTimeFormatted = apiData.avg_turnover;
+    avgTurnoverTime = parseTurnoverTime(apiData.avg_turnover);
+  } else {
+    avgTurnoverTime = parseTurnoverTime(apiData.avg_turnover);
+  }
+
   const transformed = {
     totalOrders: apiData.total_orders,
     totalSuccessOrders: apiData.total_success_order,
     totalCancelOrders: apiData.total_cancel_order,
     totalRevenue: apiData.total_revenue,
     avgOrderValue: apiData.avg_order_value,
-    avgTurnoverTime: apiData.avg_turnover_minutes,
+    avgTurnoverTime: avgTurnoverTime,
+    avgTurnoverTimeFormatted: avgTurnoverTimeFormatted,
     totalDineInOrders: apiData.total_dine_in_order,
     totalParcelOrders: apiData.total_parcel_order,
     totalVegOrders: apiData.total_veg_order,
@@ -117,21 +166,21 @@ export const fetchInvestorStats = async (): Promise<InvestorStats> => {
 };
 
 /**
- * Mock data - Used as fallback when API fails
+ * Default empty stats - Used as fallback when API fails
  */
-export const mockInvestorStats: InvestorStats = {
-  totalOrders: 1250000,
-  totalSuccessOrders: 1187500,
-  totalCancelOrders: 62500,
-  totalRevenue: 45000000,
-  avgOrderValue: 360,
-  avgTurnoverTime: 18,
-  totalDineInOrders: 750000,
-  totalParcelOrders: 500000,
-  totalVegOrders: 600000,
-  totalNonVegOrders: 500000,
-  totalVeganOrders: 100000,
-  totalEggOrders: 50000,
+export const defaultInvestorStats: InvestorStats = {
+  totalOrders: 0,
+  totalSuccessOrders: 0,
+  totalCancelOrders: 0,
+  totalRevenue: 0,
+  avgOrderValue: 0,
+  avgTurnoverTime: 0,
+  totalDineInOrders: 0,
+  totalParcelOrders: 0,
+  totalVegOrders: 0,
+  totalNonVegOrders: 0,
+  totalVeganOrders: 0,
+  totalEggOrders: 0,
 };
 
 /**

@@ -4,7 +4,7 @@ import React from 'react';
 import { CountUp } from '@/components/reactbits';
 import { 
   InvestorStats, 
-  mockInvestorStats, 
+  defaultInvestorStats, 
   calculateDerivedMetrics
 } from '@/types/investor-stats';
 import { useInvestorStats } from '@/hooks/useInvestorStats';
@@ -75,8 +75,8 @@ const InvestorStatsSection: React.FC<InvestorStatsSectionProps> = ({
   const shouldFetch = useApi && !providedStats;
   const { data: queryStats, isLoading, isError } = useInvestorStats(shouldFetch);
   
-  // Use provided stats if available, otherwise use query data, fallback to mock
-  const stats: InvestorStats = providedStats || queryStats || mockInvestorStats;
+  // Use provided stats if available, otherwise use query data, fallback to default
+  const stats: InvestorStats = providedStats || queryStats || defaultInvestorStats;
   // Only show loading if we're using API and no stats were provided
   const isActuallyLoading = useApi && !providedStats && isLoading;
   const error = (useApi && !providedStats && isError) ? 'Failed to load statistics. Showing cached data.' : null;
@@ -114,6 +114,7 @@ const InvestorStatsSection: React.FC<InvestorStatsSectionProps> = ({
       label: 'Avg Turnover Time',
       icon: Clock,
       format: 'time' as const,
+      formattedValue: stats.avgTurnoverTimeFormatted, // Original string format like "26m 53s"
     },
     {
       value: stats.totalSuccessOrders,
@@ -292,7 +293,7 @@ const InvestorStatsSection: React.FC<InvestorStatsSectionProps> = ({
                         index % 2 === 0 ? 'text-primary' : 'text-primary-600'
                       }`} />
                     </div>
-                    <h3 className="text-[42px] font-bold mb-2">
+                    <h3 className="text-[22px] font-bold mb-2">
                       {stat.format === 'currency' ? (
                         <>
                           <span className="text-2xl">₹</span>
@@ -307,13 +308,21 @@ const InvestorStatsSection: React.FC<InvestorStatsSectionProps> = ({
                         </>
                       ) : stat.format === 'time' ? (
                         <>
-                          <CountUp 
-                            to={typeof stat.value === 'number' && !isNaN(stat.value) ? stat.value : 0} 
-                            duration={2.5}
-                            delay={index * 0.15}
-                            className="counter"
-                          />
-                          <span className="text-2xl"> min</span>
+                          {stat.formattedValue ? (
+                            // Display the original formatted string directly (e.g., "26m 53s")
+                            <span className="text-[42px]">{stat.formattedValue}</span>
+                          ) : (
+                            // Fallback to CountUp if formatted value not available
+                            <>
+                              <CountUp 
+                                to={typeof stat.value === 'number' && !isNaN(stat.value) ? stat.value : 0} 
+                                duration={2.5}
+                                delay={index * 0.15}
+                                className="counter"
+                              />
+                              <span className="text-2xl"> min</span>
+                            </>
+                          )}
                         </>
                       ) : stat.format === 'percentage' ? (
                         <>
