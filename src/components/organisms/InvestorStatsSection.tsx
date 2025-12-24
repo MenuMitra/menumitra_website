@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { CountUp } from '@/components/reactbits';
 import { 
   InvestorStats, 
   defaultInvestorStats, 
@@ -202,29 +201,6 @@ const InvestorStatsSection: React.FC<InvestorStatsSectionProps> = ({
     },
   ];
 
-  const getFormattedValue = (stat: typeof featuredStats[0]) => {
-    // Ensure value is a valid number
-    const value = typeof stat.value === 'number' && !isNaN(stat.value) ? stat.value : 0;
-    if (stat.format === 'currency') {
-      // For CountUp, we'll use the raw number and format in display
-      return value;
-    }
-    return value;
-  };
-
-  const getDisplayValue = (stat: typeof featuredStats[0], rawValue: number) => {
-    if (stat.format === 'currency') {
-      if (rawValue >= 10000000) {
-        return `${(rawValue / 10000000).toFixed(2)}Cr`;
-      } else if (rawValue >= 100000) {
-        return `${(rawValue / 100000).toFixed(2)}L`;
-      } else if (rawValue >= 1000) {
-        return `${(rawValue / 1000).toFixed(2)}K`;
-      }
-      return formatNumber(rawValue);
-    }
-    return formatNumber(rawValue);
-  };
 
   // Loading state
   if (isActuallyLoading) {
@@ -297,13 +273,7 @@ const InvestorStatsSection: React.FC<InvestorStatsSectionProps> = ({
                       {stat.format === 'currency' ? (
                         <>
                           <span className="text-2xl">₹</span>
-                          <CountUp 
-                            to={getFormattedValue(stat)} 
-                            duration={2.5}
-                            delay={index * 0.15}
-                            separator=","
-                            className="counter"
-                          />
+                          {formatNumber(stat.value)}
                           {stat.value >= 10000000 ? 'Cr' : stat.value >= 100000 ? 'L' : stat.value >= 1000 ? 'K' : ''}
                         </>
                       ) : stat.format === 'time' ? (
@@ -312,37 +282,21 @@ const InvestorStatsSection: React.FC<InvestorStatsSectionProps> = ({
                             // Display the original formatted string directly (e.g., "26m 53s")
                             <span className="text-[22px]">{stat.formattedValue}</span>
                           ) : (
-                            // Fallback to CountUp if formatted value not available
+                            // Fallback to direct display if formatted value not available
                             <>
-                              <CountUp 
-                                to={typeof stat.value === 'number' && !isNaN(stat.value) ? stat.value : 0} 
-                                duration={2.5}
-                                delay={index * 0.15}
-                                className="counter"
-                              />
+                              {typeof stat.value === 'number' && !isNaN(stat.value) ? formatNumber(stat.value) : '0'}
                               <span className="text-2xl"> min</span>
                             </>
                           )}
                         </>
                       ) : stat.format === 'percentage' ? (
                         <>
-                          <CountUp 
-                            to={typeof stat.value === 'number' && !isNaN(stat.value) ? stat.value : 0} 
-                            duration={2.5}
-                            delay={index * 0.15}
-                            className="counter"
-                          />
+                          {typeof stat.value === 'number' && !isNaN(stat.value) ? stat.value.toFixed(2) : '0'}
                           <span className="text-2xl">%</span>
                         </>
                       ) : (
                         <>
-                          <CountUp 
-                            to={typeof stat.value === 'number' && !isNaN(stat.value) ? stat.value : 0} 
-                            duration={2.5}
-                            delay={index * 0.15}
-                            separator=","
-                            className="counter"
-                          />
+                          {formatNumber(stat.value)}
                           {stat.suffix}
                         </>
                       )}
@@ -388,14 +342,7 @@ const InvestorStatsSection: React.FC<InvestorStatsSectionProps> = ({
                       <div className="flex items-baseline justify-between">
                         <div>
                           <p className="text-3xl font-bold mb-1">
-                            <CountUp 
-                              to={typeof stat.value === 'number' && !isNaN(stat.value) ? stat.value : 0} 
-                              duration={2}
-                              delay={index * 0.2}
-                              separator=","
-                              className="counter"
-                            />
-                            +
+                            {formatNumber(stat.value)}+
                           </p>
                           {stat.percentage && (
                             <p className="text-sm text-gray-600">
@@ -432,14 +379,7 @@ const InvestorStatsSection: React.FC<InvestorStatsSectionProps> = ({
                       <div className="flex items-baseline justify-between">
                         <div>
                           <p className="text-3xl font-bold mb-1">
-                            <CountUp 
-                              to={typeof stat.value === 'number' && !isNaN(stat.value) ? stat.value : 0} 
-                              duration={2}
-                              delay={(index + 2) * 0.2}
-                              separator=","
-                              className="counter"
-                            />
-                            +
+                            {formatNumber(stat.value)}+
                           </p>
                           {stat.percentage && (
                             <p className="text-sm text-gray-600">
@@ -471,14 +411,7 @@ const InvestorStatsSection: React.FC<InvestorStatsSectionProps> = ({
                         <IconComponent className={`w-10 h-10 ${stat.color} mb-4`} />
                         <h4 className="text-lg font-semibold mb-3">{stat.label}</h4>
                         <p className="text-2xl font-bold">
-                          <CountUp 
-                            to={typeof stat.value === 'number' && !isNaN(stat.value) ? stat.value : 0} 
-                            duration={2}
-                            delay={(index + 4) * 0.15}
-                            separator=","
-                            className="counter"
-                          />
-                          +
+                          {formatNumber(stat.value)}+
                         </p>
                       </div>
                     </div>
