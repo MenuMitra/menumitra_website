@@ -310,7 +310,7 @@ const InvestorStatsSection: React.FC<InvestorStatsSectionProps> = ({
                         <>
                           {stat.formattedValue ? (
                             // Display the original formatted string directly (e.g., "26m 53s")
-                            <span className="text-[42px]">{stat.formattedValue}</span>
+                            <span className="text-[22px]">{stat.formattedValue}</span>
                           ) : (
                             // Fallback to CountUp if formatted value not available
                             <>
