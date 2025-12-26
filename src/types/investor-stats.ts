@@ -57,6 +57,9 @@ export interface InvestorStats {
   totalOrders: number;
   totalSuccessOrders: number;
   totalCancelOrders: number;
+  weeklyOrders: number;
+  avgDailyOrder: number;
+  avgMonthlyOrder: number;
   
   // Revenue Statistics
   totalRevenue: number; // in currency units
@@ -170,6 +173,9 @@ const transformApiResponse = (apiData: ApiInvestorStatsResponse['data']): Invest
     totalOrders: apiData.total_orders,
     totalSuccessOrders: apiData.total_success_order,
     totalCancelOrders: apiData.total_cancel_order,
+    weeklyOrders: apiData.weekly_orders || 0,
+    avgDailyOrder: apiData.avg_daily_order || 0,
+    avgMonthlyOrder: apiData.avg_monthly_order || 0,
     totalRevenue: apiData.total_revenue,
     avgOrderValue: apiData.avg_order_value,
     avgTurnoverTime: avgTurnoverTime,
@@ -246,6 +252,9 @@ export const defaultInvestorStats: InvestorStats = {
   totalOrders: 0,
   totalSuccessOrders: 0,
   totalCancelOrders: 0,
+  weeklyOrders: 0,
+  avgDailyOrder: 0,
+  avgMonthlyOrder: 0,
   totalRevenue: 0,
   avgOrderValue: 0,
   avgTurnoverTime: 0,

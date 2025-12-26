@@ -2,6 +2,7 @@ import React from 'react';
 import FooterSection from '@/components/organisms/FooterSection';
 import InvestorStatsSection from '@/components/organisms/InvestorStatsSection';
 import OutletsSection from '@/components/organisms/OutletsSection';
+import OrdersSection from '@/components/organisms/OrdersSection';
 import RefetchButton from '@/components/organisms/RefetchButton';
 import { Metadata } from 'next';
 
@@ -60,6 +61,9 @@ const InvestorsPage: React.FC = () => {
 
       {/* Statistics Section */}
       <InvestorStatsSection />
+
+      {/* Orders Section */}
+      <OrdersSection />
 
       {/* Outlets Section */}
       <OutletsSection />
