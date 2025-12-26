@@ -186,7 +186,7 @@ const InvestorStatsSection: React.FC<InvestorStatsSectionProps> = ({
               <h2>MenuMitra by the Numbers</h2>
               <p className="mt-4 text-gray-600">Loading statistics...</p>
             </div>
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 max-md:grid-cols-1">
+            <div className="grid grid-cols-3 lg:grid-cols-3 gap-6 max-md:grid-cols-1">
               {[1, 2, 3, 4, 5, 6].map((i) => (
                 <div key={i} className="bg-white shadow-box rounded-medium p-2.5 animate-pulse">
                   <div className="bg-white border border-dashed rounded border-gray-100 p-8 h-full">
@@ -226,7 +226,7 @@ const InvestorStatsSection: React.FC<InvestorStatsSectionProps> = ({
             </p>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 max-md:grid-cols-1">
+          <div className="grid grid-cols-3 lg:grid-cols-3 gap-6 max-md:grid-cols-1">
             {featuredStats.map((stat, index) => {
               const IconComponent = stat.icon;
               return (
