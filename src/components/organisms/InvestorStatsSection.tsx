@@ -3,8 +3,7 @@
 import React from 'react';
 import { 
   InvestorStats, 
-  defaultInvestorStats, 
-  calculateDerivedMetrics
+  defaultInvestorStats
 } from '@/types/investor-stats';
 import { useInvestorStats } from '@/hooks/useInvestorStats';
 import {
@@ -80,9 +79,7 @@ const InvestorStatsSection: React.FC<InvestorStatsSectionProps> = ({
   const isActuallyLoading = useApi && !providedStats && isLoading;
   const error = (useApi && !providedStats && isError) ? 'Failed to load statistics. Showing cached data.' : null;
 
-  const metrics = calculateDerivedMetrics(stats);
-
-  // Featured stats (key metrics)
+  // Featured stats (key metrics) - only backend data, no calculated values
   const featuredStats = [
     {
       value: stats.totalOrders,
@@ -122,22 +119,14 @@ const InvestorStatsSection: React.FC<InvestorStatsSectionProps> = ({
       icon: CheckCircle,
       format: 'number' as const,
     },
-    {
-      value: metrics.successRate,
-      suffix: '%',
-      label: 'Success Rate',
-      icon: TrendingUp,
-      format: 'percentage' as const,
-    },
   ];
 
-  // Detailed stats grouped by category
+  // Detailed stats grouped by category - only backend data, no calculated percentages
   const orderStatusStats = [
     {
       label: 'Success Orders',
       value: stats.totalSuccessOrders,
       icon: CheckCircle,
-      percentage: metrics.successRate,
       color: 'text-green-500',
       bgColor: 'bg-green-50',
     },
@@ -145,7 +134,6 @@ const InvestorStatsSection: React.FC<InvestorStatsSectionProps> = ({
       label: 'Cancel Orders',
       value: stats.totalCancelOrders,
       icon: XCircle,
-      percentage: metrics.cancelRate,
       color: 'text-red-500',
       bgColor: 'bg-red-50',
     },
@@ -156,7 +144,6 @@ const InvestorStatsSection: React.FC<InvestorStatsSectionProps> = ({
       label: 'Dine-in Orders',
       value: stats.totalDineInOrders,
       icon: Utensils,
-      percentage: metrics.dineInPercentage,
       color: 'text-blue-500',
       bgColor: 'bg-blue-50',
     },
@@ -164,7 +151,6 @@ const InvestorStatsSection: React.FC<InvestorStatsSectionProps> = ({
       label: 'Parcel Orders',
       value: stats.totalParcelOrders,
       icon: Package,
-      percentage: metrics.parcelPercentage,
       color: 'text-orange-500',
       bgColor: 'bg-orange-50',
     },
@@ -341,14 +327,9 @@ const InvestorStatsSection: React.FC<InvestorStatsSectionProps> = ({
                       </div>
                       <div className="flex items-baseline justify-between">
                         <div>
-                          <p className="text-3xl font-bold mb-1">
+                          <p className="text-3xl font-bold">
                             {formatNumber(stat.value)}+
                           </p>
-                          {stat.percentage && (
-                            <p className="text-sm text-gray-600">
-                              {formatPercentage(stat.percentage)} of total orders
-                            </p>
-                          )}
                         </div>
                       </div>
                     </div>
@@ -378,14 +359,9 @@ const InvestorStatsSection: React.FC<InvestorStatsSectionProps> = ({
                       </div>
                       <div className="flex items-baseline justify-between">
                         <div>
-                          <p className="text-3xl font-bold mb-1">
+                          <p className="text-3xl font-bold">
                             {formatNumber(stat.value)}+
                           </p>
-                          {stat.percentage && (
-                            <p className="text-sm text-gray-600">
-                              {formatPercentage(stat.percentage)} of total orders
-                            </p>
-                          )}
                         </div>
                       </div>
                     </div>

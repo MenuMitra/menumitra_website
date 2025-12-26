@@ -1,6 +1,7 @@
 import React from 'react';
 import FooterSection from '@/components/organisms/FooterSection';
 import InvestorStatsSection from '@/components/organisms/InvestorStatsSection';
+import OutletsSection from '@/components/organisms/OutletsSection';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -57,6 +58,9 @@ const InvestorsPage: React.FC = () => {
 
       {/* Statistics Section */}
       <InvestorStatsSection />
+
+      {/* Outlets Section */}
+      <OutletsSection />
 
       <FooterSection />
     </>

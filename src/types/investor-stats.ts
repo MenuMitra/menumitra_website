@@ -12,7 +12,7 @@ export interface ApiInvestorStatsResponse {
     total_orders: number;
     total_revenue: number;
     avg_order_value: number;
-    avg_turnover: string; // Format: "26m 53s" or number (for backward compatibility)
+    avg_turnover: string; // Format: "26m 4s" or number (for backward compatibility)
     avg_turnover_minutes?: number; // Legacy field, may not be present
     total_success_order: number;
     total_cancel_order: number;
@@ -22,6 +22,33 @@ export interface ApiInvestorStatsResponse {
     total_vegan_order: number;
     total_egg_order: number;
     total_nonveg_order: number;
+    weekly_orders?: number;
+    avg_daily_order?: number;
+    avg_monthly_order?: number;
+    // Outlet statistics nested under 'outlets' object
+    outlets?: {
+      total_outlets: number;
+      veg_outlets: number;
+      nonveg_outlets: number;
+      types_counts: {
+        hotel?: number;
+        canteen?: number;
+        outlet?: number;
+        cafe?: number;
+        restaurant?: number;
+        qsr?: number;
+        bakeries?: number;
+        pizzeria?: number;
+        fine_dine?: number;
+        food_courts?: number;
+        food_truck?: number;
+        bar_pub?: number;
+        catering?: number;
+        cloud_kitchens?: number;
+        large_chain?: number;
+      };
+      onboarded_this_month: number;
+    };
   };
 }
 
@@ -48,6 +75,27 @@ export interface InvestorStats {
   totalNonVegOrders: number;
   totalVeganOrders: number;
   totalEggOrders: number;
+  
+  // Outlet Statistics
+  totalOutlets: number;
+  totalVegOutlets: number;
+  totalNonVegOutlets: number;
+  outletsByType: {
+    restaurant: number;
+    cafe: number;
+    hotel: number;
+    qsr: number;
+    bakeries: number;
+    pizzeria: number;
+    'fine-dine': number;
+    'food-courts': number;
+    'food-truck': number;
+    'bar-pub': number;
+    catering: number;
+    'cloud-kitchens': number;
+    'large-chain': number;
+  };
+  outletsOnboardedThisMonth: number;
 }
 
 export interface FeaturedStat {
@@ -118,7 +166,7 @@ const transformApiResponse = (apiData: ApiInvestorStatsResponse['data']): Invest
     avgTurnoverTime = parseTurnoverTime(apiData.avg_turnover);
   }
 
-  const transformed = {
+  const transformed: InvestorStats = {
     totalOrders: apiData.total_orders,
     totalSuccessOrders: apiData.total_success_order,
     totalCancelOrders: apiData.total_cancel_order,
@@ -132,6 +180,29 @@ const transformApiResponse = (apiData: ApiInvestorStatsResponse['data']): Invest
     totalNonVegOrders: apiData.total_nonveg_order,
     totalVeganOrders: apiData.total_vegan_order,
     totalEggOrders: apiData.total_egg_order,
+    // Outlet statistics - populated from nested 'outlets' object if available
+    totalOutlets: apiData.outlets?.total_outlets || 0,
+    totalVegOutlets: apiData.outlets?.veg_outlets || 0,
+    totalNonVegOutlets: apiData.outlets?.nonveg_outlets || 0,
+    outletsByType: {
+      // Map API outlet types to our internal types
+      // API uses: hotel, canteen, outlet, cafe
+      // We map: 'outlet' and 'canteen' to 'restaurant' for display
+      restaurant: (apiData.outlets?.types_counts?.outlet || 0) + (apiData.outlets?.types_counts?.canteen || 0) + (apiData.outlets?.types_counts?.restaurant || 0),
+      cafe: apiData.outlets?.types_counts?.cafe || 0,
+      hotel: apiData.outlets?.types_counts?.hotel || 0,
+      qsr: apiData.outlets?.types_counts?.qsr || 0,
+      bakeries: apiData.outlets?.types_counts?.bakeries || 0,
+      pizzeria: apiData.outlets?.types_counts?.pizzeria || 0,
+      'fine-dine': apiData.outlets?.types_counts?.fine_dine || 0,
+      'food-courts': apiData.outlets?.types_counts?.food_courts || 0,
+      'food-truck': apiData.outlets?.types_counts?.food_truck || 0,
+      'bar-pub': apiData.outlets?.types_counts?.bar_pub || 0,
+      catering: apiData.outlets?.types_counts?.catering || 0,
+      'cloud-kitchens': apiData.outlets?.types_counts?.cloud_kitchens || 0,
+      'large-chain': apiData.outlets?.types_counts?.large_chain || 0,
+    },
+    outletsOnboardedThisMonth: apiData.outlets?.onboarded_this_month || 0,
   };
   return transformed;
 };
@@ -184,6 +255,25 @@ export const defaultInvestorStats: InvestorStats = {
   totalNonVegOrders: 0,
   totalVeganOrders: 0,
   totalEggOrders: 0,
+  totalOutlets: 0,
+  totalVegOutlets: 0,
+  totalNonVegOutlets: 0,
+  outletsByType: {
+    restaurant: 0,
+    cafe: 0,
+    hotel: 0,
+    qsr: 0,
+    bakeries: 0,
+    pizzeria: 0,
+    'fine-dine': 0,
+    'food-courts': 0,
+    'food-truck': 0,
+    'bar-pub': 0,
+    catering: 0,
+    'cloud-kitchens': 0,
+    'large-chain': 0,
+  },
+  outletsOnboardedThisMonth: 0,
 };
 
 /**
