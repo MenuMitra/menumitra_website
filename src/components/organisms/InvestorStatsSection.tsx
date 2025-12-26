@@ -275,11 +275,6 @@ const InvestorStatsSection: React.FC<InvestorStatsSectionProps> = ({
                             </>
                           )}
                         </>
-                      ) : stat.format === 'percentage' ? (
-                        <>
-                          {typeof stat.value === 'number' && !isNaN(stat.value) ? stat.value.toFixed(2) : '0'}
-                          <span className="text-2xl">%</span>
-                        </>
                       ) : (
                         <>
                           {formatNumber(stat.value)}

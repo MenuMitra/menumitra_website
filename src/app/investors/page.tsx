@@ -2,6 +2,7 @@ import React from 'react';
 import FooterSection from '@/components/organisms/FooterSection';
 import InvestorStatsSection from '@/components/organisms/InvestorStatsSection';
 import OutletsSection from '@/components/organisms/OutletsSection';
+import RefetchButton from '@/components/organisms/RefetchButton';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -43,7 +44,8 @@ const InvestorsPage: React.FC = () => {
       {/* Hero Section */}
       <section className="hero overflow-hidden relative max-lg:pt-150 pt-[240px] pb-[60px] z-40">
         <div className="container">
-          <div className="max-w-[948px] mx-auto text-center">
+          <div className="max-w-[948px] mx-auto text-center relative">
+            <RefetchButton className="!absolute !top-0 !right-0" />
             <p className="mb-4 font-medium uppercase">Investors</p>
             <h1 className="max-lg:mb-10 mb-10">
               Investor Relations
