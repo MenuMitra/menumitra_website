@@ -80,14 +80,8 @@ const InvestorStatsSection: React.FC<InvestorStatsSectionProps> = ({
   const error = (useApi && !providedStats && isError) ? 'Failed to load statistics. Showing cached data.' : null;
 
   // Featured stats (key metrics) - only backend data, no calculated values
+  // Note: Total Orders is now in OrdersSection, removed from here to avoid duplication
   const featuredStats = [
-    {
-      value: stats.totalOrders,
-      suffix: '+',
-      label: 'Total Orders',
-      icon: ShoppingCart,
-      format: 'number' as const,
-    },
     {
       value: stats.totalRevenue,
       suffix: '',
