@@ -29,10 +29,10 @@ interface InvestorStatsSectionProps {
 }
 
 /**
- * Format number with commas
+ * Format number with commas (Indian numbering system)
  */
 const formatNumber = (num: number): string => {
-  return new Intl.NumberFormat('en-US').format(num);
+  return new Intl.NumberFormat('en-IN').format(num);
 };
 
 /**
