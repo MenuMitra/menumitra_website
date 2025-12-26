@@ -106,13 +106,6 @@ const InvestorStatsSection: React.FC<InvestorStatsSectionProps> = ({
       format: 'time' as const,
       formattedValue: stats.avgTurnoverTimeFormatted, // Original string format like "26m 53s"
     },
-    {
-      value: stats.totalSuccessOrders,
-      suffix: '+',
-      label: 'Success Orders',
-      icon: CheckCircle,
-      format: 'number' as const,
-    },
   ];
 
   // Detailed stats grouped by category - only backend data, no calculated percentages
