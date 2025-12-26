@@ -1,15 +1,11 @@
 // API Configuration
-// Conditional domain selection based on environment
-
-const isDevelopment = process.env.NODE_ENV === 'development';
+// Single production base URL
+// Can be overridden by NEXT_PUBLIC_API_BASE_URL environment variable
 
 const API_CONFIG = {
-  // Conditional base domain
-  // Development: uses men4u.xyz
-  // Production/Staging: uses ghanish.in
-  baseUrl: isDevelopment 
-    ? 'https://ghanish.in/v2/website_api'    // Production
-    : 'https://menu4.xyz/v2/website_api',  // Testing
+  // Production base URL
+  // Can be overridden by NEXT_PUBLIC_API_BASE_URL environment variable
+  baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL || 'https://menu4.xyz/v2/website_api',
   
   // API Endpoints
   endpoints: {

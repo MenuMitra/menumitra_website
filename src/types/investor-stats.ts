@@ -3,6 +3,8 @@
  * This structure is designed to be easily replaceable with API calls
  */
 
+import { API_ENDPOINTS } from '@/config/api';
+
 // API Response interface (snake_case from API)
 export interface ApiInvestorStatsResponse {
   detail: string;
@@ -140,8 +142,9 @@ const transformApiResponse = (apiData: ApiInvestorStatsResponse['data']): Invest
  * Use the useInvestorStats hook instead of calling this directly
  */
 export const fetchInvestorStats = async (): Promise<InvestorStats> => {
-  // Use environment variable or direct URL
-  const apiUrl = process.env.NEXT_PUBLIC_METRICS_API_URL || 'https://menusmitra.xyz/v2/website_api/app_metrics_summary';
+  // Always use centralized API config - single source of truth
+  // Base URL can be overridden via NEXT_PUBLIC_API_BASE_URL in api.ts
+  const apiUrl = API_ENDPOINTS.APP_METRICS_SUMMARY;
   
   const response = await fetch(apiUrl, {
     method: 'GET',
