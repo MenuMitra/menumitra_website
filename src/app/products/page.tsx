@@ -185,48 +185,61 @@ const ProductsPage: React.FC = () => {
               <div className="text-center mb-8">
                 <h3 className="text-2xl font-semibold mb-4 flex items-center justify-center gap-3">
                   <Globe className="w-6 h-6 text-green-600" />
-                  Production Environment
+                  Live Web Applications
                 </h3>
                 <p className="text-gray-600">
-                  Live, production-ready applications serving real customers. 
-                  These applications are optimized for performance, security, and reliability.
+                  Live web apps — click to open.
                 </p>
+
+                <div className="flex items-center justify-center gap-2 mt-4 flex-wrap">
+                  <span className="text-xs font-medium px-3 py-1 rounded-full bg-green-50 text-green-700 border border-green-100">
+                    Secure
+                  </span>
+                  <span className="text-xs font-medium px-3 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-100">
+                    Fast
+                  </span>
+                  <span className="text-xs font-medium px-3 py-1 rounded-full bg-gray-50 text-gray-700 border border-gray-100">
+                    Always On
+                  </span>
+                </div>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {productsV2Web.production.map((product, index) => (
                   <div 
                     key={index} 
-                    className="border border-gray-200 rounded-lg p-5 hover:shadow-md transition-shadow h-full flex flex-col"
+                    className="bg-white shadow-box rounded-medium p-2.5"
                     data-aos="fade-up"
                     data-aos-offset={100}
                     data-aos-duration={300}
                     data-aos-delay={400 + (index * 50)}
                     data-aos-once="true"
                   >
-                    <div className="flex-1">
-                      <h4 className="font-semibold text-lg mb-2">{product.name}</h4>
-                      <p className="text-sm text-gray-600 mb-3">{product.description}</p>
-                      <a 
-                        href={product.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-600 hover:underline text-sm font-medium break-all"
-                      >
-                        {product.url}
-                      </a>
-                    </div>
+                    <div className="border border-dashed rounded border-gray-100 p-6 h-full max-lg:p-5 text-center flex flex-col">
+                      <div className="flex-1">
+                        <h4 className="font-semibold text-lg mb-2">{product.name}</h4>
+                        <p className="text-sm text-gray-600 mb-3">{product.description}</p>
+                        <a 
+                          href={product.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-600 hover:underline text-sm font-medium break-all"
+                        >
+                          {product.url}
+                        </a>
+                      </div>
 
-                    <div className="pt-4">
-                      <a 
-                        href={product.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn btn-navbar btn-sm flex items-center justify-center gap-2 w-full"
-                      >
-                        <ExternalLink className="w-4 h-4" color="white" />
-                        Visit
-                      </a>
+                      <div className="pt-5 flex justify-center">
+                        <a 
+                          href={product.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn btn-navbar btn-sm flex items-center justify-center gap-2 w-full"
+                        >
+                          <ExternalLink className="w-4 h-4" color="white" />
+                          Visit
+                        </a>
+                      </div>
                     </div>
                   </div>
                 ))}
