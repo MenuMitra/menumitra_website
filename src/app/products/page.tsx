@@ -44,11 +44,6 @@ const ProductsPage: React.FC = () => {
   const productsV2Web = {
     production: [
       {
-        name: 'MenuMitra Stats',
-        url: website.stats,
-        description: 'Comprehensive analytics dashboard with real-time insights, sales reports, and performance metrics to drive data-driven decisions.'
-      },
-      {
         name: 'MenuMitra Kitchen Display System',
         url: website.kds,
         description: 'Advanced Kitchen Display System with order prioritization, cooking timers, and seamless kitchen workflow management.'
@@ -198,35 +193,36 @@ const ProductsPage: React.FC = () => {
                 </p>
               </div>
               
-              <div className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {productsV2Web.production.map((product, index) => (
                   <div 
                     key={index} 
-                    className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow"
+                    className="border border-gray-200 rounded-lg p-5 hover:shadow-md transition-shadow h-full flex flex-col"
                     data-aos="fade-up"
                     data-aos-offset={100}
                     data-aos-duration={300}
                     data-aos-delay={400 + (index * 50)}
                     data-aos-once="true"
                   >
-                    <div className="flex items-center justify-between">
-                      <div className="flex-1">
-                        <h4 className="font-semibold text-lg mb-1">{product.name}</h4>
-                        <p className="text-sm text-gray-600 mb-2">{product.description}</p>
-                        <a 
-                          href={product.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-blue-600 hover:underline text-sm font-medium"
-                        >
-                          {product.url}
-                        </a>
-                      </div>
+                    <div className="flex-1">
+                      <h4 className="font-semibold text-lg mb-2">{product.name}</h4>
+                      <p className="text-sm text-gray-600 mb-3">{product.description}</p>
                       <a 
                         href={product.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="btn btn-navbar btn-sm flex items-center gap-2 ml-4"
+                        className="text-blue-600 hover:underline text-sm font-medium break-all"
+                      >
+                        {product.url}
+                      </a>
+                    </div>
+
+                    <div className="pt-4">
+                      <a 
+                        href={product.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-navbar btn-sm flex items-center justify-center gap-2 w-full"
                       >
                         <ExternalLink className="w-4 h-4" color="white" />
                         Visit

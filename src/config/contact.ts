@@ -17,9 +17,9 @@ export const CONTACT_CONFIG = {
     www: 'menumitra.com',
     // Subdomain URLs
     stats: 'https://stats.menumitra.com',
-    kds: 'https://kds.menumitra.com',
-    cds: 'https://cds.menumitra.com',
-    customer: 'https://customer.menumitra.com',
+    kds: 'https://kds2.2.menumitra.com',
+    cds: 'https://cds2.2.menumitra.com',
+    customer: 'https://customer2.2.menumitra.com',
   },
   
   // Social media handles
