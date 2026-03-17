@@ -132,7 +132,7 @@ const HeroSection: React.FC = () => {
                   style={{ zIndex: 20 }}
                 >
                   <img
-                    src="/images/payment/payment-hero-device1.png"
+                    src="/images/payment/payment-hero-device2.png"
                     alt="MenuMitra mobile app interface"
                     className="cursor-target inline-block rounded-t-medium w-full h-auto shadow-lg"
                   />
