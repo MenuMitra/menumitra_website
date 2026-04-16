@@ -29,7 +29,7 @@ const ProductsPage: React.FC = () => {
       description: 'Revolutionary restaurant management platform with AI-powered insights, real-time analytics, and advanced automation features for modern restaurant owners.',
       downloadUrl: 'https://menu4.xyz/website/MenuMitra_Mobile_2.2.apk',
       platform: 'Android 6.0 and above',
-      releaseDate: 'Released: 4 April 2026'
+      releaseDate: 'Released: 16 April 2026'
     },
     {
       name: 'POS System',
@@ -37,7 +37,7 @@ const ProductsPage: React.FC = () => {
       description: 'Next-generation point-of-sale system featuring cloud synchronization, advanced inventory management, and integrated payment processing.',
       downloadUrl: 'https://menu4.xyz/website/desktop/MenuMitra-POS-2.2.0-x64.exe',
       platform: 'Windows 7 and above',
-      releaseDate: 'Released: 4 April 2026'
+      releaseDate: 'Released: 16 April 2026'
     }
   ];
 
