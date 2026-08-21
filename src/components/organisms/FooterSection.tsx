@@ -155,6 +155,19 @@ const FooterSection: React.FC<FooterSectionProps> = ({ className = '' }) => {
               </li>
               <li>
                 <Link 
+                  href="/onboarding" 
+                  className={`relative inline-block overflow-hidden text-base capitalize before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:origin-right before:scale-x-0 before:bg-paragraph before:transition-transform before:duration-500 before:content-[''] before:hover:origin-left before:hover:scale-x-100 ${
+                    isActive('/onboarding') ? 'text-primary' : 'text-paragraph'
+                  }`}
+                >
+                  <span className="flex items-center gap-2">
+                    <Store className="w-4 h-4" />
+                    Outlet Onboarding
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link 
                   href="/careers" 
                   className={`relative inline-block overflow-hidden text-base capitalize before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full before:origin-right before:scale-x-0 before:bg-paragraph before:transition-transform before:duration-500 before:content-[''] before:hover:origin-left before:hover:scale-x-100 ${
                     isActive('/careers') ? 'text-primary' : 'text-paragraph'
