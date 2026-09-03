@@ -35,7 +35,7 @@ const ProductsPage: React.FC = () => {
       name: 'POS System',
       image: 'images/mm/mm.png',
       description: 'Next-generation point-of-sale system featuring cloud synchronization, advanced inventory management, and integrated payment processing.',
-      downloadUrl: 'https://menu4.xyz/website/downloads/v2_3/MenuMitra-POS-2.3.2-x64.exe',
+      downloadUrl: 'https://menu4.xyz/website/downloads/v2_3/MenuMitra-POS-2.3.3-x64.exe',
       platform: 'Windows 7 and above',
       releaseDate: 'Released: 25 August 2026'
     }
