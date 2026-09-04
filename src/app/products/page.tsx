@@ -1,15 +1,30 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import FooterSection from '@/components/organisms/FooterSection';
-import { Download, Smartphone, Monitor, Calendar, ExternalLink, Globe } from 'lucide-react';
+import { Download, Smartphone, Monitor, Calendar, ExternalLink, Globe, Tag, HardDrive } from 'lucide-react';
 import SectionDivider from '@/components/atoms/SectionDivider';
 import { website } from '@/config/contact';
 import { useAOS } from '@/hooks/useAOS';
-import { getProductDownloadUrl } from '@/config/api';
+import { API_ENDPOINTS } from '@/config/api';
+
+interface DownloadItem {
+  version: string | null;
+  filename: string | null;
+  download_url: string | null;
+  file_size_mb: number;
+  version_folder: string | null;
+  release_date?: string | null;
+}
+
+interface DownloadsResponse {
+  mobile_app: DownloadItem;
+  pos_app: DownloadItem;
+}
 
 const ProductsPage: React.FC = () => {
   const { refreshAOS } = useAOS();
+  const [downloadsData, setDownloadsData] = useState<DownloadsResponse | null>(null);
   
   useEffect(() => {
     // Refresh AOS when component mounts to ensure animations work on first load
@@ -20,24 +35,57 @@ const ProductsPage: React.FC = () => {
     return () => clearTimeout(timer);
   }, [refreshAOS]);
   
+  useEffect(() => {
+    const fetchDownloads = async () => {
+      try {
+        const response = await fetch(API_ENDPOINTS.GET_LATEST_DOWNLOADS);
+        if (response.ok) {
+          const data = await response.json();
+          setDownloadsData(data.downloads);
+        }
+      } catch (error) {
+        console.error("Failed to fetch latest downloads:", error);
+      }
+    };
+    
+    fetchDownloads();
+  }, []);
 
+  const formatDate = (dateString?: string | null) => {
+    if (!dateString) return 'N/A';
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) return 'N/A';
+    return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+  };
 
   const productsV2 = [
     {
       name: 'Mobile App',
       image: 'images/mm/mm.png',
       description: 'Revolutionary restaurant management platform with AI-powered insights, real-time analytics, and advanced automation features for modern restaurant owners.',
-      downloadUrl: 'https://menu4.xyz/website/downloads/v2_3/MenuMitra-Mobile-2.3.1.apk',
+      downloadUrl: downloadsData?.mobile_app?.download_url || '#',
       platform: 'Android 6.0 and above',
-      releaseDate: 'Released: 25 August 2026'
+      details: downloadsData?.mobile_app?.version 
+        ? [
+            { icon: <Tag className="w-4 h-4" />, text: `Version: ${downloadsData.mobile_app.version}` },
+            { icon: <Calendar className="w-4 h-4" />, text: `Released: ${formatDate(downloadsData.mobile_app.release_date)}` },
+            { icon: <HardDrive className="w-4 h-4" />, text: `Size: ${downloadsData.mobile_app.file_size_mb} MB` }
+          ]
+        : []
     },
     {
       name: 'POS System',
       image: 'images/mm/mm.png',
       description: 'Next-generation point-of-sale system featuring cloud synchronization, advanced inventory management, and integrated payment processing.',
-      downloadUrl: 'https://menu4.xyz/website/downloads/v2_3/MenuMitra-POS-2.3.2-x64.exe',
+      downloadUrl: downloadsData?.pos_app?.download_url || '#',
       platform: 'Windows 7 and above',
-      releaseDate: 'Released: 25 August 2026'
+      details: downloadsData?.pos_app?.version 
+        ? [
+            { icon: <Tag className="w-4 h-4" />, text: `Version: ${downloadsData.pos_app.version}` },
+            { icon: <Calendar className="w-4 h-4" />, text: `Released: ${formatDate(downloadsData.pos_app.release_date)}` },
+            { icon: <HardDrive className="w-4 h-4" />, text: `Size: ${downloadsData.pos_app.file_size_mb} MB` }
+          ]
+        : []
     }
   ];
 
@@ -127,19 +175,28 @@ const ProductsPage: React.FC = () => {
                     />
                     <h3 className="mb-0">{product.name}</h3>
                   </div>
-                  <p className="mb-4">{product.description}</p>
-                  <p className="text-sm text-gray-600 mb-2 flex items-center justify-center gap-2">
-                    {product.platform.includes('Android') ? (
-                      <Smartphone className="w-4 h-4" />
-                    ) : (
-                      <Monitor className="w-4 h-4" />
-                    )}
-                    {product.platform}
-                  </p>
-                  <p className="text-sm text-gray-600 mb-4 flex items-center justify-center gap-2">
-                    <Calendar className="w-4 h-4" />
-                    {product.releaseDate}
-                  </p>
+                  <p className="mb-4 text-gray-600">{product.description}</p>
+                  
+                  <hr className="w-full border-gray-200 mb-4" />
+
+                  <div className="flex justify-center mb-8">
+                    <div className="flex flex-col text-sm text-gray-600 items-start">
+                      <p className="flex items-center gap-2 m-0">
+                        {product.platform.includes('Android') ? (
+                          <Smartphone className="w-4 h-4" />
+                        ) : (
+                          <Monitor className="w-4 h-4" />
+                        )}
+                        {product.platform}
+                      </p>
+                      {product.details.map((detail, idx) => (
+                        <p key={idx} className="flex items-center gap-2 m-0">
+                          {detail.icon}
+                          {detail.text}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
                   <div className="flex justify-center mt-4">
                     <a 
                       href={product.downloadUrl}
