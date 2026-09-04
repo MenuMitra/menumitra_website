@@ -5,8 +5,9 @@
 const API_CONFIG = {
   // Production base URL
   // Can be overridden by NEXT_PUBLIC_API_BASE_URL environment variable
-  baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL || 'https://menu4.xyz/v2.3/website_api',
-  
+  baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL || 'https://menusmitra.xyz/v2.3/website_api',
+  // Development base URL  : https://menu4.xyz
+  // Production base URL : https://menusmitra.xyz
   // API Endpoints
   endpoints: {
     // Data Removal APIs
@@ -21,6 +22,9 @@ const API_CONFIG = {
     
     // Onboarding API
     onboardingCreate: '/onboarding/create',
+    
+    // Downloads API
+    getLatestDownloads: '/get_latest_downloads',
   },
   
   // Default headers
@@ -44,6 +48,7 @@ export const API_ENDPOINTS = {
   CREATE_WEBSITE_BOOKING: getApiUrl('createWebsiteBooking'),
   APP_METRICS_SUMMARY: getApiUrl('appMetricsSummary'),
   ONBOARDING_CREATE: getApiUrl('onboardingCreate'),
+  GET_LATEST_DOWNLOADS: getApiUrl('getLatestDownloads'),
 };
 
 // Export base URL for other uses
