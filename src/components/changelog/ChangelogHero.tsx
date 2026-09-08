@@ -17,7 +17,7 @@ const ChangelogHero: React.FC = () => {
           MenuMitra Changelog
         </h1>
         <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-          See what&apos;s new across MenuMitra&apos;s customer-facing products, starting from version 2.3.0.
+          Explore the latest features, improvements, and updates across MenuMitra products.
         </p>
       </div>
     </section>
