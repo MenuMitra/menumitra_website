@@ -1,4 +1,4 @@
-export type AppId = 'pos' | 'mobile' | 'kds';
+export type AppId = 'pos' | 'mobile' | 'kds' | 'cds' | 'customer';
 
 export type ChangeCategory = 'added' | 'improved' | 'fixed' | 'changed' | 'security';
 

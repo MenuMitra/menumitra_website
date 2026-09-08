@@ -16,16 +16,24 @@ const APP_LABEL_MAP: Record<AppId, string> = {
   pos: 'MenuMitra POS',
   mobile: 'Mobile App',
   kds: 'Kitchen Display System',
+  cds: 'Customer Display System',
+  customer: 'Customer App',
 };
+
+const APP_ORDER: AppId[] = ['pos', 'mobile', 'kds', 'cds', 'customer'];
 
 const ChangelogFilter: React.FC<ChangelogFilterProps> = ({
   activeFilter,
   onFilterChange,
   availableApps,
 }) => {
+  const sortedApps = [...availableApps].sort(
+    (a, b) => APP_ORDER.indexOf(a) - APP_ORDER.indexOf(b)
+  );
+
   const filterOptions: FilterOption[] = [
     { id: 'all', label: 'All Products' },
-    ...availableApps.map((app) => ({
+    ...sortedApps.map((app) => ({
       id: app,
       label: APP_LABEL_MAP[app] || app.toUpperCase(),
     })),

@@ -34,6 +34,8 @@ const APP_BADGE_MAP: Record<AppId, string> = {
   pos: 'MenuMitra POS',
   mobile: 'Mobile App',
   kds: 'Kitchen Display System',
+  cds: 'Customer Display System',
+  customer: 'Customer App',
 };
 
 const ChangelogTimeline: React.FC<ChangelogTimelineProps> = ({ releases, activeFilter }) => {

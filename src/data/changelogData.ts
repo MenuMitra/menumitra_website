@@ -89,8 +89,8 @@ export const CHANGELOG_RELEASES: ReleaseVersionGroup[] = [
       {
         id: 'v230-4',
         category: 'improved',
-        description: 'Streamlined PIN Login: Fast, secure 4-digit PIN authentication across POS and Mobile App.',
-        apps: ['pos', 'mobile'],
+        description: 'Streamlined PIN Login: Fast, secure PIN authentication replacing OTP-based login across POS, Mobile App, KDS, CDS, and Customer App.',
+        apps: ['pos', 'mobile', 'kds', 'cds', 'customer'],
       },
       {
         id: 'v230-5',
@@ -163,6 +163,24 @@ export const CHANGELOG_RELEASES: ReleaseVersionGroup[] = [
         category: 'added',
         description: 'Multi-Printer Support: Print orders and KOTs across multiple thermal printers simultaneously.',
         apps: ['pos', 'mobile'],
+      },
+      {
+        id: 'v230-17',
+        category: 'added',
+        description: 'New Order Audio Alerts: Instant notification sound alerts play on Kitchen Display System (KDS) whenever a new order is placed.',
+        apps: ['kds'],
+      },
+      {
+        id: 'v230-18',
+        category: 'added',
+        description: 'Notification Sound Selection: Added dropdown settings in KDS to select custom order notification sounds.',
+        apps: ['kds'],
+      },
+      {
+        id: 'v230-19',
+        category: 'improved',
+        description: 'Section Name in Order Details: Clearly displays menu section names within KDS order item details.',
+        apps: ['kds'],
       },
     ],
   },
