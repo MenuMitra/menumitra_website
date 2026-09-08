@@ -150,6 +150,7 @@ const Header: React.FC = () => {
       { type: 'link', href: '/', label: 'Home', icon: <Home className="w-4 h-4" /> },
       { type: 'link', href: '/about', label: 'About', icon: <Info className="w-4 h-4" /> },
       { type: 'link', href: '/products', label: 'Products', icon: <Package2 className="w-4 h-4" /> },
+      { type: 'link', href: '/changelog', label: 'Changelog', icon: <FileText className="w-4 h-4" /> },
       { 
         type: 'dropdown',
         label: 'Features',

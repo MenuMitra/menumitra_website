@@ -2,7 +2,8 @@
 
 import React, { useEffect } from 'react';
 import FooterSection from '@/components/organisms/FooterSection';
-import { Download, Smartphone, Monitor, Calendar, ExternalLink, Globe } from 'lucide-react';
+import Link from 'next/link';
+import { Download, Smartphone, Monitor, Calendar, ExternalLink, Globe, FileText } from 'lucide-react';
 import SectionDivider from '@/components/atoms/SectionDivider';
 import { website } from '@/config/contact';
 import { useAOS } from '@/hooks/useAOS';
@@ -101,12 +102,19 @@ const ProductsPage: React.FC = () => {
 
           <SectionDivider className="my-16" />
 
-          <div className="text-center mx-auto mb-25">
+          <div className="text-center mx-auto mb-16">
             <h2 className="mb-4">Applications</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-gray-600 max-w-2xl mx-auto mb-4">
               Powerful restaurant management applications built with cutting-edge technology. 
               Download our production-ready solutions designed for modern restaurant operations.
             </p>
+            <Link 
+              href="/changelog" 
+              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-primary-600 bg-primary-50 rounded-full hover:bg-primary-100 transition-colors border border-primary-200/60"
+            >
+              <FileText className="w-4 h-4" />
+              View Release History &amp; Changelog
+            </Link>
           </div>
           <div
             className=" grid grid-cols-2 max-sm:grid-cols-1 gap-8 relative z-10"
