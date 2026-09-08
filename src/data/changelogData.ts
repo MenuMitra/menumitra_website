@@ -158,6 +158,12 @@ export const CHANGELOG_RELEASES: ReleaseVersionGroup[] = [
         description: 'Combo Item Details Preview Modal: Clickable info icon on combo items to preview included dishes in a popup modal.',
         apps: ['pos', 'mobile'],
       },
+      {
+        id: 'v230-16',
+        category: 'added',
+        description: 'Multi-Printer Support: Print orders and KOTs across multiple thermal printers simultaneously.',
+        apps: ['pos', 'mobile'],
+      },
     ],
   },
 ];
