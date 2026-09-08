@@ -56,9 +56,9 @@ const ChangelogTimeline: React.FC<ChangelogTimelineProps> = ({ releases, activeF
         if (filteredChanges.length === 0) return null;
 
         return (
-          <div key={group.version} className="relative pl-6 sm:pl-8 border-l-2 border-primary-200 space-y-6">
+          <div key={group.version} className="relative pl-6 sm:pl-8 border-l-2 border-emerald-200 space-y-6">
             {/* Timeline Dot */}
-            <div className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-primary-600 ring-4 ring-primary-100" />
+            <div className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-emerald-600 ring-4 ring-emerald-100" />
 
             {/* Version Header Card */}
             <div className="flex flex-wrap items-center justify-between gap-3 pb-2 border-b border-gray-100">
@@ -67,7 +67,7 @@ const ChangelogTimeline: React.FC<ChangelogTimelineProps> = ({ releases, activeF
                   Version {group.version}
                 </span>
                 {group.version === '2.3.3' && (
-                  <span className="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-0.5 rounded-full bg-primary-100 text-primary-800 border border-primary-300">
+                  <span className="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
                     <Sparkles className="w-3 h-3" /> Latest Release
                   </span>
                 )}
