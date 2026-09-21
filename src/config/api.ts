@@ -8,6 +8,8 @@ const API_CONFIG = {
   baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL || 'https://menusmitra.xyz/v2.3/website_api',
   // Development base URL  : https://menu4.xyz
   // Production base URL : https://menusmitra.xyz
+  // baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL || 'https://menusmitra.xyz/v2.3/website_api',
+  
   // API Endpoints
   endpoints: {
     // Data Removal APIs
