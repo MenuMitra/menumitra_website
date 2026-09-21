@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 import FooterSection from '@/components/organisms/FooterSection';
-import { Download, Smartphone, Monitor, Calendar, ExternalLink, Globe, Tag, HardDrive } from 'lucide-react';
+import { Download, Smartphone, Monitor, Calendar, ExternalLink, Globe, Tag, HardDrive, FileText } from 'lucide-react';
 import SectionDivider from '@/components/atoms/SectionDivider';
 import { website } from '@/config/contact';
 import { useAOS } from '@/hooks/useAOS';
